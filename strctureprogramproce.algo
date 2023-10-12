@@ -1,0 +1,83 @@
+PROBLEME1
+
+ALGORITHM PROBLEME1
+VAR
+    sum : INTEGER;
+    tab1 : ARRAY_OF integer[5];
+    tab2 : ARRAY_OF integer[5];
+    // declarion de deux tableaux de 5 elements et d'un entier nommé sum
+    test : BOOLEAN;
+BEGIN
+    // remplissage des tableaux par un user 
+    FOR i FROM 1 TO 5 STEP 1  DO
+        Read(tab1[i]); // tableau 1
+    END_FOR
+    FOR i FROM 1 TO 5 STEP 1 DO
+          Read(tab2[i]); // tableau 2
+    END_FOR
+    sum:= 0; // initialisation de sum à 0
+    // comparaison et addition des elements
+
+    //tableau 1
+        FOR i FROM 1 TO 5 STEP 1 DO
+        test := true;
+         FOR j FROM 1 TO 5 STEP 1  DO
+            IF (tab1[i]==tab2[j]) THEN
+                test := false;
+            END_IF
+         END_FOR
+         IF (test==true) THEN
+            sum := sum + tab1[i];
+         END_IF;
+        END_FOR
+
+    // tableau 2
+        FOR i FROM 1 TO 5 STEP 1 DO
+        test := true;
+         FOR j FROM 1 TO 5 STEP 1  DO
+            IF (tab2[i]==tab1[j]) THEN
+                test := false;
+            END_IF
+         END_FOR
+         IF (test==true) THEN
+            sum := sum + tab2[i];
+         END_IF
+        END_FOR
+END
+
+
+PROBLEME 2
+
+
+PROCEDURE  dot_product (v1,v2 : INTEGER)
+VAR
+    ps: integer;
+BEGIN
+    ps := v1*v2;
+END
+
+ALGORITHM PROBLEME2
+VAR
+    n := integer; // le nombre de vecteur donné
+    table : ARRAY_OF INTEGER[n]; 
+    try : INTEGER; 
+    testeur : BOOLEAN;
+BEGIN
+    // Remplissage du tableau de vecteur 
+    FOR i FROM 1 TO n STEP 1  DO
+        Read(table[i]);
+    END_FOR
+    FOR i FROM 1 TO n STEP 1  DO
+    testeur := false;
+        FOR j FROM 1 TO n STEP 1  DO
+            try:=dot_product(table[i],table[j]);// appel de la procedure et passage des valeurs 
+            IF (try==0) THEN
+                testeur:=true;//tester si les vecteurs sont orthogonaux 
+            END_IF
+        END_FOR
+        IF (testeur==true) THEN
+            Write("ces deux vecteurs sont orthoghonaux.");
+            Break;
+        END_IF
+    END_FOR
+END
